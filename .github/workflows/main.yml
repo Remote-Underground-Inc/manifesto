@@ -34,7 +34,7 @@ jobs:
           PORT: ${{ secrets.PORT }}
           KEY: ${{ secrets.SSHKEY }}
         with:
-          source: "./public/*"
+          source: "."
           target: "/var/www/apes-blog"
 
       - name: Executing remote command
