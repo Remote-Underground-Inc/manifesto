@@ -45,6 +45,9 @@ jobs:
           PORT: ${{ secrets.PORT }}
           KEY: ${{ secrets.SSHKEY }}
           script: ls
+
+      - name: Check out code
+        uses: actions/checkout@v2
           
       - name: Build docker image
         uses: appleboy/ssh-action@master
