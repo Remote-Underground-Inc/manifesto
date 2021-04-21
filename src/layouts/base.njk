@@ -19,7 +19,7 @@
       {% endif %}
     </title>
 
-    <link rel="icon" type= “image/x-icon” href="/images/favicon.ico">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐵</text></svg>">
 
     <meta property="og:title" content="{{  title or site.name | escape }}">
     <meta property="og:site_name" content="{{ site.name }}"/>
@@ -81,7 +81,7 @@
                   {% endif %}
 
                   <li class="nav-item">
-                    <a href="{{ item.url | url }}" {{ currentAttribute | safe }} {{ externalAttribute | safe }}>{{ item.text }}</a>
+                    <a href="{{ item.url }}" {{ currentAttribute | safe }} {{ externalAttribute | safe }}>{{ item.text }}</a>
                   </li>
                 {% endfor %}
               </ul>

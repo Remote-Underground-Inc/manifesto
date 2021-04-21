@@ -1,14 +1,16 @@
 ---
-title: About Aidan Charles Powell
+title: Manifeste du cercle des singes
 layout: about.njk
-name: Aidan Charles Powell
-image: '/images/me.jpeg'
+image: '/images/apes.jpeg'
 ---
 
-Aidan Charles Powell is a 23-year-old health centre receptionist who enjoys watching television, eating out and social media. He is generous and giving, but can also be very rude and a bit lazy.
+Ce cercle regroupe tous les travailleurs qui recherchent à concilier les valeurs suivantes :
+- Ethique professionnelle.
+- Empathie et compassion pour les singes enfermés dans la même cage.
+- Une finalité de projet qui cherche à améliorer les conditions de vie du plus grand nombre de singes, ou à défaut ne pas leur nuire.
 
-He is a Jedi who defines himself as straight. He has a degree in medicine. He is a vegetarian. He is obsessed with vintage dresses.
+### Préceptes fondamentaux
 
-He grew up in a middle class neighbourhood. After his mother died when he was young, he was raised by his father
-
-He is currently married to Maureen Erika Quinn. Maureen is 13 years older than him and works as a sales assistant.
+1. Ensemble, singes forts.
+2. Singes, stupides.
+3. Nous, singes.
