@@ -9,12 +9,12 @@
   "headerLinks": [
     {
       "text": "Blog",
-      "url": "/blog",
+      "url": "/blog/",
       "external": false
     },
     {
       "text": "About",
-      "url": "/about",
+      "url": "/about/",
       "external": false
     }
   ],
