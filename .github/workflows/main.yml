@@ -1,80 +1,29 @@
-name: Deploy blog
+name: Build static
 on:
   push:
-    branches: [ master ]
-  pull_request:
     branches: [ master ]
 
   workflow_dispatch:
 jobs:
 
-  copy:
+  static:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@master
 
-      - name: delete /var/www/apes-blog
-        uses: appleboy/ssh-action@v0.1.4
+      - name: Build Eleventy
+        uses: tollr/actions-eleventy@master
         with:
-          host: ${{ secrets.HOST }}
-          USERNAME: ${{ secrets.USERNAME }}
-          PORT: ${{ secrets.PORT }}
-          KEY: ${{ secrets.SSHKEY }}
-          script: rm -rf /var/www/apes-blog
-
-
-      - name: Copy repository to /var/www/apes-blog
-        uses: appleboy/scp-action@v0.1.4
-        env:
+          args: --output public
+          install_dependencies: true
+      # Copying files and artifacts via SSH
+      - name: Copying files to server
+        uses: appleboy/scp-action@master
+        with:
           HOST: ${{ secrets.HOST }}
           USERNAME: ${{ secrets.USERNAME }}
           PORT: ${{ secrets.PORT }}
           KEY: ${{ secrets.SSHKEY }}
-        with:
-          source: "."
-          target: "/var/www/apes-blog"
-
-      - name: ls /var/www/apes-blog
-        uses: appleboy/ssh-action@v0.1.4
-        with:
-          host: ${{ secrets.HOST }}
-          USERNAME: ${{ secrets.USERNAME }}
-          PORT: ${{ secrets.PORT }}
-          KEY: ${{ secrets.SSHKEY }}
-          script: ls /var/www/apes-blog && ls /var/www/apes-blog/src/posts
-
-  build:
-    runs-on: ubuntu-latest
-    needs: copy
-
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v3
-        
-      - name: Stop container
-        uses: appleboy/ssh-action@v0.1.4
-        with:
-          host: ${{ secrets.HOST }}
-          USERNAME: ${{ secrets.USERNAME }}
-          PORT: ${{ secrets.PORT }}
-          KEY: ${{ secrets.SSHKEY }}
-          script: docker stop apes-blog || true && docker rm apes-blog || true
-        
-      - name: Build docker image
-        uses: appleboy/ssh-action@v0.1.4
-        with:
-          host: ${{ secrets.HOST }}
-          USERNAME: ${{ secrets.USERNAME }}
-          PORT: ${{ secrets.PORT }}
-          KEY: ${{ secrets.SSHKEY }}
-          script: docker build -t apes-blog /var/www/apes-blog/
-          
-      - name: Run docker image
-        uses: appleboy/ssh-action@v0.1.4
-        with:
-          host: ${{ secrets.HOST }}
-          USERNAME: ${{ secrets.USERNAME }}
-          PORT: ${{ secrets.PORT }}
-          KEY: ${{ secrets.SSHKEY }}
-          script: docker run --name apes-blog -dp 8000:80 apes-blog
+          rm: true
+          source: "public/*"
+          target: "${{ secrets.REMOTE_DIR }}"
