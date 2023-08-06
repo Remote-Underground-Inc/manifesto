@@ -8,8 +8,8 @@ const baseFilename = isDev ? 'main' : 'main.[contenthash]';
 
 module.exports = {
   entry: [
-    path.resolve(__dirname, 'src', 'js', 'main.js'),
-    path.resolve(__dirname, 'src', 'css', 'main.css'),
+    path.resolve(__dirname, 'theme', 'js', 'main.js'),
+    path.resolve(__dirname, 'theme', 'css', 'main.css'),
   ],
   output: {
     path: path.resolve(__dirname, 'public', 'assets'),

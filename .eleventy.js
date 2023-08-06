@@ -36,7 +36,7 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.setDataDeepMerge(true);
-  eleventyConfig.addPassthroughCopy({ 'src/images': 'images' });
+  eleventyConfig.addPassthroughCopy({ 'content/images': 'images' });
   eleventyConfig.setBrowserSyncConfig({ files: [manifestPath] });
 
   eleventyConfig.addShortcode('bundledcss', function () {
@@ -114,11 +114,11 @@ module.exports = function (eleventyConfig) {
 
   return {
     dir: {
-      input: 'src',
+      input: 'content',
       output: 'public',
-      includes: 'includes',
       data: 'data',
-      layouts: 'layouts',
+      includes: '../theme/includes',
+      layouts: '../theme/layouts',
       passthroughFileCopy: true,
       templateFormats: ['html', 'njk', 'md'],
       htmlTemplateEngine: 'njk',
