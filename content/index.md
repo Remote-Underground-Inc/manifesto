@@ -1,6 +1,4 @@
 ---
 layout: home
-title: 'Le cercle des singes'
+title: 'Manifesto'
 ---
-
-# Apes Together Strong!
