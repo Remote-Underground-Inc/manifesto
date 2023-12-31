@@ -5,5 +5,3 @@ permalink: posts/{{ title | slug }}/index.html
 date: '2023-08-15'
 tags: [écrire]
 ---
-
-

@@ -1,8 +1,9 @@
 # Apes
 
-Welcome to my static website generator. It's based on 
-- [eleventy](https://github.com/11ty/eleventy) 
-- [eleventy-duo](https://github.com/yinkakun/eleventy-duo) for the theme. You can see it running [here](https://eleventyduo.netlify.app) 
+Welcome to my static website generator. It's based on
+
+-   [eleventy](https://github.com/11ty/eleventy)
+-   [eleventy-duo](https://github.com/yinkakun/eleventy-duo) for the theme. You can see it running [here](https://eleventyduo.netlify.app)
 
 ## Northstar
 
@@ -17,6 +18,6 @@ You write your content in markdown, reference this project, push your code and y
 
 ## S/O
 
-- [Grinfinch](https://github.com/Grinfinch)
-- [eleventy](https://github.com/11ty/eleventy)
-- [yinkakun](https://github.com/yinkakun)
+-   [Grinfinch](https://github.com/Grinfinch)
+-   [eleventy](https://github.com/11ty/eleventy)
+-   [yinkakun](https://github.com/yinkakun)

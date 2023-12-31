@@ -1,22 +1,22 @@
 {
-  "name": "Le cercle des singes",
-  "description": "Apes Together Strong",
-  "url": "https://apestogetherstrong.fr/",
-  "author": {
-    "name": "Caesar",
-    "email": "remote.underground@gmail.com"
-  },
-  "headerLinks": [
-    {
-      "text": "Blog",
-      "url": "/blog/",
-      "external": false
+    "name": "Le cercle des singes",
+    "description": "Apes Together Strong",
+    "url": "https://apestogetherstrong.fr/",
+    "author": {
+        "name": "Caesar",
+        "email": "remote.underground@gmail.com"
     },
-    {
-      "text": "About",
-      "url": "/about/",
-      "external": false
-    }
-  ],
-  "showFooterAttribution": true
+    "headerLinks": [
+        {
+            "text": "Blog",
+            "url": "/blog/",
+            "external": false
+        },
+        {
+            "text": "About",
+            "url": "/about/",
+            "external": false
+        }
+    ],
+    "showFooterAttribution": true
 }

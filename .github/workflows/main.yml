@@ -1,29 +1,28 @@
 name: Build static
 on:
-  push:
-    branches: [ main ]
+    push:
+        branches: [main]
 
-  workflow_dispatch:
+    workflow_dispatch:
 jobs:
+    static:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@master
 
-  static:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-
-      - name: Build Eleventy
-        uses: tollr/actions-eleventy@master
-        with:
-          args: --output public
-          install_dependencies: true
-      # Copying files and artifacts via SSH
-      - name: Copying files to server
-        uses: appleboy/scp-action@master
-        with:
-          HOST: ${{ secrets.HOST }}
-          USERNAME: ${{ secrets.USERNAME }}
-          PORT: ${{ secrets.PORT }}
-          KEY: ${{ secrets.SSHKEY }}
-          rm: true
-          source: "public/*"
-          target: "${{ secrets.REMOTE_DIR }}"
+            - name: Build Eleventy
+              uses: tollr/actions-eleventy@master
+              with:
+                  args: --output public
+                  install_dependencies: true
+            # Copying files and artifacts via SSH
+            - name: Copying files to server
+              uses: appleboy/scp-action@master
+              with:
+                  HOST: ${{ secrets.HOST }}
+                  USERNAME: ${{ secrets.USERNAME }}
+                  PORT: ${{ secrets.PORT }}
+                  KEY: ${{ secrets.SSHKEY }}
+                  rm: true
+                  source: 'public/*'
+                  target: '${{ secrets.REMOTE_DIR }}'
