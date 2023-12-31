@@ -2,51 +2,24 @@
 layout: base.njk
 ---
 
-<article class="post">
-  <header class="post__header">
-    <h1>{{ title }}</h1>
-    <div class="post__details">
-      <time datetime="{{ page.date | htmlDateString }}">
-        {{ page.date | readableDate }}
-      </time>
-      <span> | </span>
-      <span>{{ content | readingTime }} read</span>
-    </div>
-  </header>
-
-  <main class="post__content">
-    {{ content | safe }}
-  </main>
-
-  <aside class="post__aside">
-    <div class="post__tags">
-      {% for tag in tags | pageTags %}
-        {% set tagUrl %}/tags/{{ tag }}/{% endset %}
-        <a href="{{ tagUrl | url }}">#{{ tag }}</a>
-      {% endfor %}
-    </div>
-
-    <nav class="post__pagination">
-      {%- set nextPost = collections.posts | getNextCollectionItem(page) %}
-      {%- if nextPost %}
-
-        <a href="{{ nextPost.url | url }}">
-          <span>←</span>
-          <span>{{ nextPost.data.title }}</span>
-        </a>
-
-      {% endif %}
-
-      {%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
-      {%- if previousPost %}
-
-        <a href="{{ previousPost.url | url }}">
-          <span>{{ previousPost.data.title }}</span>
-          <span>→</span>
-        </a>
-
-      {% endif %}
-    </nav>
-  </aside>
-
-</article>
+<section class="s-grid-cols-6 m-grid-cols-12 s-gap-x-16 m-gap-x-24 l-gap-x-32 s-px-16 m-px-24 l-px-32">
+  <article class="s-col-span-6 m-col-span-12 max-w-40 justify-self-center">
+    <ul class="flex s-mb-8 m-mb-12 l-mt-16 s-gap-x-16">
+      <li class="text-md medium secondary-64">{{ date | readableDate }}</li>
+      <li class="text-md primary-64">/</li>
+      <li class="text-md medium secondary-64">{{ author or site.author.name }}</li>
+      <li class="text-md primary-64">/</li>
+      <li>
+        <ul class="flex s-gap-x-8">
+          {% for tag in tags | pageTags %}
+            {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+            <li class="link text-md">
+              <a class="gray-12" href="{{ tagUrl | url }}">{{ tag }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </li>
+    </ul>
+    {{ content | safe }}
+  </article>
+</section>
