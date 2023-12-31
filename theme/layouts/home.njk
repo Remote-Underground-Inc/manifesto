@@ -1,38 +1,37 @@
 ---
 layout: base
+title: aleph
 ---
 
-<header class="hero">
-  <div class="hero-content">
-    <div class="intro">
-      {{ content | safe }}
-    </div>
-
-    {% if site.socialLinks %}
-      <ul class="hero__social-links">
-        {% for item in site.socialLinks %}
-          {% set externalAttribute = '' %}
-
-          {% if item.external %}
-            {% set externalAttribute = 'target="_blank" rel="noopener noreferrer"' %}
-          {% endif %}
-
-          <li>
-            <a href="{{ item.url | url }}" {{ externalAttribute | safe }}>{{ item.text }}</a>
-          </li>
-        {% endfor %}
-      </ul>
-    {% endif %}
-  </div>
-
-</header>
-
-<section class="post-list__wrapper">
-  <h2 class="post-list__heading">Recent Posts</h2>
-
-  {% set postslist = collections.posts | head(-10) %}
-  {% include "posts-list.njk" %}
-
+<section class="s-grid-cols-6 m-grid-cols-12 s-gap-x-16 m-gap-x-24 l-gap-x-32 s-px-16 m-px-24 l-px-32 s-mb-8 m-mb-12 l-mb-16
+    medium">
+  <p class="s-col-3-7 m-col-4-13 l-col-3-13 text-2xl">Posts</p>
 </section>
-
-<a class="all-posts-link" href="{{ '/blog/' | url }}">View All Posts</a>
+<section class="s-grid-cols-6 m-grid-cols-12 s-gap-x-16 m-gap-x-24 l-gap-x-32 s-p-16 m-p-24 l-p-32 s-border-1-t">
+  <div class="s-col-span-2 m-col-span-3 l-col-span-2">
+    <p class="text-md medium">Filter by topic</p>
+    <ul>
+      {% for tag in collections.tagList %}
+        {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+        <li class="link text-md">
+          <a class="gray-12" href="{{ tagUrl | url }}">{{ tag }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="s-col-span-4 m-col-span-9 l-col-span-10">
+    <ul class="s-grid-cols-4 m-grid-cols-9 l-grid-cols-10 s-gap-x-16 m-gap-x-24 l-gap-x-32 s-gap-y-16 l-gap-y-32">
+      {% for post in collections.posts %}
+        <li class="s-col-span-4 m-col-span-3 l-col-span-2">
+          <ul class="flex-col m-gap-y-12 l-gap-y-16">
+            <li class="text-md primary-64">/</li>
+            <li class="text-md secondary-64">{{ post.date | readableDate }}</li>
+            <li>
+              <a class="text-xl link medium gray-12" href="{{ post.url }}">{{ post.data.title }}</a>
+            </li>
+          </ul>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

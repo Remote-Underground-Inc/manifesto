@@ -1,45 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href={{ page.url | url | absoluteUrl(site.url) }}> {% bundledcss %} <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+    <link rel="canonical" href="{{ page.url | url | absoluteUrl(site.url) }}">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+      {% bundledcss %}
     <title>
-      {{ title  | escape }}
-      {% if title %}
-        | {{ site.name }}
+      {% if title !== site.name %}
+        {{ title | escape }}
       {% else %}
-        {{ site.name }}
+        {{ site.name | capitalize }}
       {% endif %}
     </title>
-    <link
-      rel="icon"
-      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22
-        font-size=%2290%22>🐵</text></svg>">
     <meta property="og:title" content="{{ title or site.name | escape }}">
-    <meta property="og:site_name" content="{{ site.name }}"/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:url" content="{{ site.url + page.url }}"/>
-    <meta name="twitter:card" content="summary_large_image">
-    {% if site.author.twitterHandle %}
-      <meta name="twitter:creator" content="@{{ site.author.twitterHandle | replace('@', '') }}"/>
-    {% endif %}
-    {% set desc = description %}
-    {% if not desc %}
-      {% set desc = content | striptags | truncate(140) %}
-    {% endif %}
+    <meta property="og:site_name" content="{{ site.name }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ site.url + page.url }}">
+    {% set desc = description or content | striptags | truncate(140) %}
     {% if desc %}
       <meta name="description" content="{{ desc | escape }}">
       <meta property="og:description" content="{{ desc | escape }}">
       <meta name="description" content="{{ desc | escape }}"/>
-    {% endif %}
-    {% if not socialImage %}
-      {% set socialImage = site.defaultSocialImage %}
-    {% endif %}
-    {% if socialImage %}
-      <meta property="og:image" content="{{ socialImage | url | absoluteUrl(site.url) }}"/>
-      <meta name="twitter:image" content="{{ socialImage | url | absoluteUrl(site.url) }}"/>
     {% endif %}
     {# Add mermaid -- start #}
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
@@ -49,20 +32,11 @@
     {# Add mermaid -- end #}
   </head>
   <body>
-    <div class="layout-wrapper">
-      <header class="header">
-        <div class="header__content">
-          <h1 class="site-title">
-            <a href={{ "/" | url }}>
-              {{ site.name }}
-            </a>
-          </h1>
-        </div>
-      </header>
-      <main class="main">
-        {{ content | safe }}
-      </main>
-      <footer class="footer"></footer>
-      {% bundledjs %}</body>
+    <header class="s-grid-cols-6 m-grid-cols-12 s-gap-x-16 m-gap-x-24 l-gap-x-32 s-px-16 m-px-24 l-px-32 s-py-96 m-my-128 l-py-128">
+      <h1 class="{{ "s-col-2-7 m-col-3-11 justify-self-end text-4xl medium" if title === site.name else "s-col-span-6 m-col-3-11 text-3xl medium" }}">{{ title }}</h1>
+    </header>
+    {{ content | safe }}
+    <footer class="footer"></footer>
+    {% bundledjs %}
   </body>
 </html>

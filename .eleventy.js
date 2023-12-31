@@ -68,14 +68,6 @@ module.exports = function (eleventyConfig) {
         );
     });
 
-    eleventyConfig.addFilter('head', (array, n) => {
-        if (n < 0) {
-            return array.slice(n);
-        }
-
-        return array.slice(0, n);
-    });
-
     eleventyConfig.addCollection('tagList', function (collection) {
         let tagSet = new Set();
         collection.getAll().forEach(function (item) {
