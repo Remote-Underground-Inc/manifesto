@@ -9,7 +9,7 @@ const baseFilename = isDev ? 'main' : 'main.[contenthash]';
 module.exports = {
     entry: [
         path.resolve(__dirname, 'theme', 'js', 'main.js'),
-        path.resolve(__dirname, 'theme', 'css', 'main.css'),
+        path.resolve(__dirname, 'theme', 'css', 'main.scss'),
     ],
     output: {
         path: path.resolve(__dirname, 'public', 'assets'),
@@ -31,18 +31,9 @@ module.exports = {
                 ],
             },
             {
-                test: /\.css$/,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            importLoaders: 1,
-                        },
-                    },
-                    'postcss-loader',
-                ],
-            },
+                test: /\.(s(a|c)ss)$/,
+                use: [MiniCssExtractPlugin.loader,'css-loader', 'sass-loader']
+             }
         ],
     },
 
