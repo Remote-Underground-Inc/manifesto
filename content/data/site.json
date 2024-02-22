@@ -1,22 +1,22 @@
 {
-    "name": "aleph",
-    "description": "",
-    "url": "https://aleph.thibaultollivier.fr/",
-    "author": {
-        "name": "Aleph",
-        "email": "remote.underground@gmail.com"
+  "name": "aleph",
+  "description": "",
+  "url": "https://aleph.thibaultollivier.fr/",
+  "author": {
+    "name": "Aleph",
+    "email": "remote.underground@gmail.com"
+  },
+  "headerLinks": [
+    {
+      "text": "Blog",
+      "url": "/blog/",
+      "external": false
     },
-    "headerLinks": [
-        {
-            "text": "Blog",
-            "url": "/blog/",
-            "external": false
-        },
-        {
-            "text": "About",
-            "url": "/about/",
-            "external": false
-        }
-    ],
-    "showFooterAttribution": true
+    {
+      "text": "About",
+      "url": "/about/",
+      "external": false
+    }
+  ],
+  "showFooterAttribution": true
 }
